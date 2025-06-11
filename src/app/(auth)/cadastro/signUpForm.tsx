@@ -1,3 +1,4 @@
+import { InputError } from "@/components/commons/inputError";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -32,22 +33,22 @@ export function SignUpForm(){
         <div className="grid gap-3">
           <Label htmlFor="name">Nome</Label>
           <Input id="name" type="text" placeholder="Joana da Silva" {...register("name")} />
-          {errors.name && <span className="red">{errors.name.message}</span>}
+          {errors.name?.message && <InputError message={errors.name.message} />}
         </div>
         <div className="grid gap-3">
           <Label htmlFor="email">Email</Label>
           <Input id="email" type="email" placeholder="joana@example.com" {...register("email")} />
-          {errors.email && <span className={cn("text-destructive text-xs font-semibold")}>{errors.email.message}</span>}
+          {errors.email?.message && <InputError message={errors.email.message} />}
         </div>
         <div className="grid gap-3">
           <Label htmlFor="phone">Telefone</Label>
           <Input id="phone" type="tel" placeholder="(xx)xxxx-xxxx" {...register("phone")}/>
-          {errors.phone && <span>{errors.phone.message}</span>}
+          {errors.phone?.message && <InputError message={errors.phone.message} />}
         </div>
         <div className="grid gap-3">
           <Label htmlFor="password">Senha</Label> 
           <Input id="password" type="password" {...register("password")} />
-          {errors.password && <span>{errors.password.message}</span>}
+          {errors.password?.message && <InputError message={errors.password.message} />}
         </div>
         <Button type="submit" className="w-full">
           Cadastrar
